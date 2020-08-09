@@ -1,15 +1,24 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home';
 import CampgroundContainer from '../containers/CampgroundContainer';
 import LocationContainer from '../containers/LocationContainer';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <CampgroundContainer />
-      <LocationContainer />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/campgrounds" component={CampgroundContainer} />
+          <Route exact path="/locations" component={LocationContainer} />
+        </Switch>
+        <CampgroundContainer />
+        <LocationContainer />
+      </div>
+    </Router>
   );
 }
 
