@@ -2,8 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
-import CampgroundContainer from '../containers/CampgroundContainer';
-import LocationContainer from '../containers/LocationContainer';
+import CampgroundContainer from './containers/CampgroundContainer';
+import LocationContainer from './containers/LocationContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Campground from './components/campgrounds/Campground';
 
@@ -17,7 +17,6 @@ function App() {
           <Route exact path="/locations" component={LocationContainer} />
           <Route exact path="/campgrounds/:id" component={Campground} />
         </Switch>
-        <CampgroundContainer />
         <LocationContainer />
       </div>
     </Router>

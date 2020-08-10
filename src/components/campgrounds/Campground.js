@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export const Campground = () => {
-    return (
-        <div>
+export default class Campground extends Component {
+    render() {
+        return (
+            <div>
 
-        </div>
-    )
+            </div>
+        )
+    }
 }

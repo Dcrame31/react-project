@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import manageCampgrounds from './reducers/manageCampgrounds';
 
-let store = createStore(manageCampgrounds, applyMiddleware(thunk))
+const store = createStore(manageCampgrounds, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,7 +1,7 @@
 // import React from 'react'
-import uuid from 'uuid';
+import { v1 as uuid } from 'uuid';
 
-function manageCampgrounds(state = {
+export default function manageCampgrounds(state = {
     campgrounds: []
 }, action) {
     switch (action.type) {
@@ -21,4 +21,3 @@ function manageCampgrounds(state = {
     }
 }
 
-export default manageCampgrounds;

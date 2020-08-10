@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CampgroundForm from '../components/campgrounds/CampgroundForm';
 
 export default class CampgroundContainer extends Component {
 
@@ -7,14 +8,14 @@ export default class CampgroundContainer extends Component {
         location: ''
     }
 
-    componentDidMount() {
-        const url = `http://localhost:3000/${this.props.location}`
-    }
+    // componentDidMount() {
+    //     const url = `http://localhost:3000/${this.props.location}`
+    // }
 
     render() {
         return (
             <div>
-
+                <CampgroundForm />
             </div>
         )
     }
