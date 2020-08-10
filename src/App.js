@@ -5,6 +5,7 @@ import Home from './components/Home';
 import CampgroundContainer from '../containers/CampgroundContainer';
 import LocationContainer from '../containers/LocationContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Campground from './components/campgrounds/Campground';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/campgrounds" component={CampgroundContainer} />
           <Route exact path="/locations" component={LocationContainer} />
+          <Route exact path="/campgrounds/:id" component={Campground} />
         </Switch>
         <CampgroundContainer />
         <LocationContainer />
