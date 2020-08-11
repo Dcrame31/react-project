@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const link = {
+    border: 'solid 5px',
     width: '100px',
     padding: '12px',
     margin: '0 6px 6px',
@@ -12,7 +13,7 @@ const link = {
 class NavBar extends React.Component {
     render() {
         return (
-            <div>
+            <div className="button">
                 <NavLink
                     to="/"
                     exact

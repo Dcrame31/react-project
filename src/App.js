@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Home from './components/Home';
+import HomeContainer from './containers/HomeContainer';
 import CampgroundContainer from './containers/CampgroundContainer';
 import LocationContainer from './containers/LocationContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -14,7 +14,7 @@ function App() {
       <NavBar />
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={HomeContainer} />
           <Route exact path="/campgrounds" component={CampgroundContainer} />
           <Route exact path="/locations" component={LocationContainer} />
           <Route exact path="/campgrounds/:id" component={Campground} />
