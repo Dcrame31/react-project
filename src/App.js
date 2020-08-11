@@ -6,10 +6,12 @@ import CampgroundContainer from './containers/CampgroundContainer';
 import LocationContainer from './containers/LocationContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Campground from './components/campgrounds/Campground';
+import NavBar from './components/NavBar'
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home} />
@@ -17,7 +19,7 @@ function App() {
           <Route exact path="/locations" component={LocationContainer} />
           <Route exact path="/campgrounds/:id" component={Campground} />
         </Switch>
-        <LocationContainer />
+        {/* <LocationContainer /> */}
       </div>
     </Router>
   );
