@@ -2,7 +2,9 @@ import { combineReducers } from 'redux';
 import manageCampgrounds from './manageCampgrounds';
 import manageLocations from './manageLocations';
 
-export default combineReducers({
+const rootReducer = combineReducers({
     manageCampgrounds,
     manageLocations
 })
+
+export default rootReducer;
