@@ -13,7 +13,7 @@ export default function manageCampgrounds(state = {
         case 'LOAD_CAMPGROUNDS':
             return {
                 ...state,
-                campgrounds: action.campgrounds
+                campgrounds: action.campground
             }
         case 'ADD_CAMPGROUND':
             const campground = {

@@ -1,18 +1,20 @@
-import React from 'react'
+// import React from 'react'
 
 export default function manageLocations(state = {
-    locations: []
+    locations: [],
+    loading: false
 }, action) {
     switch (action.type) {
         case 'LOADING_LOCATIONS':
             return {
                 ...state,
-                locations: [...state.locations]
+                loading: true
             }
         case 'LOAD_LOCATIONS':
             return {
                 ...state,
-                locations: action.locations
+                locations: action.payload,
+                loading: false
             }
         default:
             return state;

@@ -1,35 +1,24 @@
 import React, { Component } from 'react'
-import CampgroundContainer from './CampgroundContainer'
+// import CampgroundContainer from './CampgroundContainer'
 import Locations from '../components/locations/Locations';
 import { connect } from 'react-redux';
-// import { fetchLocations } from '../actions/campgroundActions';
+import { fetchLocations } from '../actions/campgroundActions';
 
 class LocationContainer extends Component {
 
-    state = {
-        locations: []
-    }
-
     componentDidMount() {
-        fetch("http://localhost:3000/locations")
-            .then(res => res.json()
-                .then(locations => {
-                    this.setState({
-                        locations: locations
-                    })
-                })
-            )
+        this.props.fetchLocations()
     }
 
     /* location onClick renders list of campgrounds */
 
     render() {
-        console.log(this.state)
-
+        const locations = this.props.locations.map((location, id) => <li>{location.name}</li>)
         return (
             <div>
-                <Locations locations={this.state.locations} />
                 {/* <CampgroundContainer location={this.state.location} /> */}
+                <Locations locations={this.props.locations} />
+                {/* {locations} */}
             </div>
         )
     }
@@ -37,10 +26,11 @@ class LocationContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        locations: state.locations
+        locations: state.manageLocations.locations,
+        loading: state.manageLocations.loading
     }
 }
 
 
 
-export default connect(mapStateToProps)(LocationContainer)
+export default connect(mapStateToProps, { fetchLocations })(LocationContainer)
