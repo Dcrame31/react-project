@@ -7,7 +7,7 @@ export const fetchCampgrounds = () => {
                 return res.json()
             })
             .then(data => {
-                dispatch({ type: 'LOAD_CAMPGROUND', campground: data })
+                dispatch({ type: 'LOAD_CAMPGROUNDS', payload: data })
             })
     }
 }

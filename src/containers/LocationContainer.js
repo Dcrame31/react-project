@@ -17,8 +17,7 @@ class LocationContainer extends Component {
         return (
             <div>
                 {/* <CampgroundContainer location={this.state.location} /> */}
-                <Locations locations={this.props.locations} />
-                {/* {locations} */}
+                {this.props.loading ? <h2>Loading...</h2> : <Locations locations={this.props.locations} />}
             </div>
         )
     }

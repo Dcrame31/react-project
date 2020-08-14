@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom';
 
-export default class Campground extends Component {
-    render() {
-        return (
-            <div>
 
-            </div>
-        )
-    }
+export default function Campground(props) {
+    return (
+        <div>
+            <ul>
+                <li><Link to="/campgrounds/:id">{props.campground.name}</Link></li>
+            </ul>
+        </div>
+    )
 }
