@@ -12,6 +12,18 @@ export const fetchCampgrounds = () => {
     }
 }
 
+export const fetchCampground = id => {
+    return dispatch => {
+        dispatch({ type: 'LOADING_CAMPGROUND' })
+        fetch(`http://localhost:3001/campgrounds/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                dispatch({ type: 'LOAD_CAMPGROUND', payload: data })
+            })
+    }
+}
+
+
 export const fetchLocations = () => {
     return dispatch => {
         dispatch({ type: 'LOADING_LOCATIONS' })
@@ -19,6 +31,17 @@ export const fetchLocations = () => {
             .then(res => res.json())
             .then(data => {
                 return dispatch({ type: 'LOAD_LOCATIONS', payload: data })
+            })
+    }
+}
+
+export const fetchLocation = id => {
+    return dispatch => {
+        dispatch({ type: 'LOADING_LOCATION' })
+        fetch(`http://localhost:3001/locations/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                return dispatch({ type: 'LOAD_LOCATION', payload: data })
             })
     }
 }

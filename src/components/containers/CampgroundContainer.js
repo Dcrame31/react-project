@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 // import CampgroundForm from '../components/campgrounds/CampgroundForm';
-import Campgrounds from '../components/campgrounds/Campgrounds';
+import Campgrounds from '../campgrounds/Campgrounds';
 import { connect } from 'react-redux';
-import { fetchCampgrounds } from '../actions/campgroundActions';
+import { fetchCampgrounds } from '../../actions/campgroundActions';
 
 class CampgroundContainer extends Component {
 
@@ -10,7 +10,6 @@ class CampgroundContainer extends Component {
         campground: '',
         location: ''
     }
-
 
     componentDidMount() {
         this.props.fetchCampgrounds();

@@ -2,18 +2,33 @@
 import { v1 as uuid } from 'uuid';
 
 export default function manageCampgrounds(state = {
-    campgrounds: []
+    campgrounds: [],
+    loading: true
 }, action) {
     switch (action.type) {
         case 'LOADING_CAMPGROUNDS':
             return {
                 ...state,
-                campgrounds: [...state.campgrounds]
+                campgrounds: [...state.campgrounds],
+                loading: true
             }
         case 'LOAD_CAMPGROUNDS':
             return {
                 ...state,
-                campgrounds: action.payload
+                campgrounds: action.payload,
+                loading: false
+            }
+        case 'LOADING_CAMPGROUND':
+            return {
+                ...state,
+                campgrounds: action.payload,
+                loading: true
+            }
+        case 'LOAD_CAMPGROUND':
+            return {
+                ...state,
+                campgrounds: [action.id],
+                loading: false
             }
         case 'ADD_CAMPGROUND':
             const campground = {

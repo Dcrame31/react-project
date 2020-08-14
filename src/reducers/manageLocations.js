@@ -16,6 +16,17 @@ export default function manageLocations(state = {
                 locations: action.payload,
                 loading: false
             }
+        case 'LOADING_LOCATION':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'LOADING_LOCATION':
+            return {
+                ...state,
+                locations: action.payload,
+                loading: false
+            }
         default:
             return state;
     }
