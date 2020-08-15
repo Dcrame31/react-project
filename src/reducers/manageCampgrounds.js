@@ -30,17 +30,19 @@ export default function manageCampgrounds(state = {
                 campgrounds: action.payload,
                 loading: false
             }
-        case 'FILTER_CAMPGROUNDS':
+        case 'ADDING_CAMPGROUND':
             return {
                 ...state,
-                campgrounds: [...state.campgrounds.filter(campground => campground.location_id === action.id)],
-                loading: false
+                campgrounds: [...state.campgrounds],
+                loading: true
             }
         case 'ADD_CAMPGROUND':
             const campground = {
                 name: action.campground.name,
                 description: action.campground.description,
                 location_id: action.campground.locationId,
+                cost: action.campground.cost,
+                link: action.campground.link,
                 id: uuid()
             };
 

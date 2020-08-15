@@ -6,7 +6,13 @@ import { connect } from 'react-redux';
 class CampgroundForm extends Component {
 
     state = {
-        campground: '',
+        campground: {
+            name: '',
+            description: '',
+            location_id: '',
+            cost: '',
+            link: ''
+        },
         locations: []
     }
 
@@ -24,7 +30,11 @@ class CampgroundForm extends Component {
             })
     }
 
-    handleOnSubmit = e => {
+    handleSubmit = e => {
+
+    }
+
+    handleChange = () => {
 
     }
 
@@ -40,11 +50,11 @@ class CampgroundForm extends Component {
                     onSubmit={() => this.handleOnSubmit}>
                     <p>Name: <input name="name" type="text" /></p>
                     <p>Description: <textarea name="description" /></p>
-                    <p>Location: <select name="location" id="type">
+                    <p>Location: <select name="location_id" id="type">
                         {locationOptions}
                     </select></p>
-                    <p>Cost: <input type="number" /></p>
-                    <p>Link: <input type="text" /></p>
+                    <p>Cost: <input type="number" name="cost" /></p>
+                    <p>Link: <input type="text" name="link" /></p>
                     <p><input type="button" value="Submit" /></p>
                 </form>
             </>
