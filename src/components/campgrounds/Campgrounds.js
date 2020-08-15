@@ -20,11 +20,13 @@ export default class Campgrounds extends Component {
 
         return (
             <div>
-                {campgrounds}
-                <br />
                 {this.state.addForm && <CampgroundForm />}
                 <button
                     onClick={() => this.handleOnClick()}>{this.state.addForm === true ? 'Hide Form' : 'Add New Campground'}</button>
+                <br />
+                <br />
+                <br />
+                {campgrounds}
             </div>
         )
     }

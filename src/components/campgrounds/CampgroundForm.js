@@ -1,22 +1,55 @@
 import React, { Component } from 'react'
+import Locations from '../locations/Locations'
+// import { fetchLocations } from '../../actions/campgroundActions';
+import { connect } from 'react-redux';
 
-export default class CampgroundForm extends Component {
+class CampgroundForm extends Component {
 
     state = {
-        campground: ''
+        campground: '',
+        locations: []
+    }
+
+    componentDidMount() {
+        this.fetchLocations()
+    }
+
+    fetchLocations() {
+        fetch("http://localhost:3001/locations")
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    locations: data
+                })
+            })
+    }
+
+    handleOnSubmit = e => {
+
     }
 
     render() {
+        const locationOptions = this.state.locations
+            .sort((a, b) => a.name > b.name ? 1 : -1)
+            .map((location) => <option value={location.id}>{location.name}</option>)
+
         return (
             <>
                 <h1>Submit a Campground</h1>
-                <form>
-                    <p>Name: <input type="text" /></p>
-                    <p>Description: <textarea /></p>
-                    <p>Location: <input type="text" /></p>
+                <form
+                    onSubmit={() => this.handleOnSubmit}>
+                    <p>Name: <input name="name" type="text" /></p>
+                    <p>Description: <textarea name="description" /></p>
+                    <p>Location: <select name="location" id="type">
+                        {locationOptions}
+                    </select></p>
+                    <p>Cost: <input type="number" /></p>
+                    <p>Link: <input type="text" /></p>
                     <p><input type="button" value="Submit" /></p>
                 </form>
             </>
         )
     }
 }
+
+export default connect()(CampgroundForm);
