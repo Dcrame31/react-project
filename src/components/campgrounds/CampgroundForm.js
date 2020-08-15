@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Locations from '../locations/Locations'
-// import { fetchLocations } from '../../actions/campgroundActions';
+// import Locations from '../locations/Locations'
+import { addCampground } from '../../actions/campgroundActions';
 import { connect } from 'react-redux';
 
 class CampgroundForm extends Component {
@@ -30,31 +30,49 @@ class CampgroundForm extends Component {
             })
     }
 
-    handleSubmit = e => {
-
+    handleSubmit = event => {
+        event.preventDefault()
+        this.addCampground()
     }
 
-    handleChange = () => {
-
+    handleChange = e => {
+        this.setState({
+            campground: { ...this.state.campground, [e.target.name]: e.target.value }
+        })
     }
 
     render() {
+        console.log(this.state.campground.name)
         const locationOptions = this.state.locations
             .sort((a, b) => a.name > b.name ? 1 : -1)
-            .map((location) => <option value={location.id}>{location.name}</option>)
+            .map((location, id) => <option key={id} value={location.id}>{location.name}</option>)
 
         return (
             <>
                 <h1>Submit a Campground</h1>
-                <form
-                    onSubmit={() => this.handleOnSubmit}>
-                    <p>Name: <input name="name" type="text" /></p>
-                    <p>Description: <textarea name="description" /></p>
-                    <p>Location: <select name="location_id" id="type">
+                <form onSubmit={() => this.handleSubmit}>
+                    <p>Name: <input name="name" type="text"
+                        value={this.state.campground.name}
+                        onChange={this.handleChange} /></p>
+
+                    <p>Description: <textarea name="description"
+                        value={this.state.campground.description}
+                        onChange={this.handleChange} /></p>
+
+                    <p>Location: <select name="location_id" id="type"
+                        value={this.state.campground.location_id}
+                        onChange={this.handleChange}>
                         {locationOptions}
                     </select></p>
-                    <p>Cost: <input type="number" name="cost" /></p>
-                    <p>Link: <input type="text" name="link" /></p>
+
+                    <p>Cost: <input type="number" name="cost"
+                        value={this.state.campground.cost}
+                        onChange={this.handleChange} /></p>
+
+                    <p>Link: <input type="text" name="link"
+                        value={this.state.campground.link}
+                        onChange={this.handleChange} /></p>
+
                     <p><input type="button" value="Submit" /></p>
                 </form>
             </>
@@ -62,4 +80,4 @@ class CampgroundForm extends Component {
     }
 }
 
-export default connect()(CampgroundForm);
+export default connect(null, { addCampground })(CampgroundForm);

@@ -52,10 +52,10 @@ class CampgroundContainer extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        campgrounds: state.manageCampgrounds.campgrounds
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         campgrounds: state.manageCampgrounds.campgrounds
+//     }
+// }
 
 export default connect(null, { fetchCampgrounds })(CampgroundContainer);
