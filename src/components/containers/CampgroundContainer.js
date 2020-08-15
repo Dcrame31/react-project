@@ -16,36 +16,37 @@ class CampgroundContainer extends Component {
         this.fetchCampgrounds();
     }
 
-    componentDidUpdate(prevState) {
-        // let searchTerm = parseInt(this.props.searchTerm)
-        if (prevState.searchTerm !== this.props.searchTerm) {
-            this.fetchCampgrounds('2')
-        }
-        // console.log(this.state.searchTerm)
+    // componentDidUpdate(prevState) {
+    //     // let searchTerm = parseInt(this.props.searchTerm)
+    //     if (prevState.searchTerm !== this.props.searchTerm) {
+    //         // this.fetchCampgrounds('2')
+    //     }
+    //     // console.log(this.state.searchTerm)
 
-        // this.fetchCampgrounds(this.state.searchTerm)
-    }
+    //     // this.fetchCampgrounds(this.state.searchTerm)
+    // }
 
-    fetchCampgrounds = (id = '') => {
-        if (id !== '') {
-            fetch(`http://localhost:3001/locations/2}`)
+    fetchCampgrounds = () => {
+        let searchTerm = parseInt(this.props.searchTerm)
+        if (this.props.searchTerm) {
+            fetch(`http://localhost:3001/locations/${searchTerm}}`)
                 .then(res => res.json())
                 .then(data => {
                     this.setState({
                         campgrounds: data.campgrounds,
-                        searchTerm: id
+                        searchTerm: searchTerm
+                    })
+                })
+        } else {
+            fetch(`http://localhost:3001/campgrounds`)
+                .then(res => res.json())
+                .then(data => {
+                    this.setState({
+                        campgrounds: data,
+                        searchTerm: ''
                     })
                 })
         }
-        // } else {
-        //     fetch(`http://localhost:3001/campgrounds`)
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             this.setState({
-        //                 campgrounds: data,
-        //             })
-        //         })
-        // }
     }
 
     handleOnClick = event => {
