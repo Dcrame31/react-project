@@ -6,6 +6,7 @@ import CampgroundContainer from './components/containers/CampgroundContainer';
 import LocationContainer from './components/containers/LocationContainer';
 import CampgroundList from './components/campgrounds/CampgroundList';
 import CampgroundInfo from './components/campgrounds/CampgroundInfo';
+import CampgroundForm from './components/campgrounds/CampgroundForm';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar'
 
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/locations" component={LocationContainer} />
           <Route exact path="/campgrounds/:id" component={CampgroundInfo} />
           <Route exact path="/locations/:id" component={CampgroundList} />
+          <Route exact path="/new-campground" component={CampgroundForm} />
         </Switch>
         {/* <LocationContainer /> */}
       </div>

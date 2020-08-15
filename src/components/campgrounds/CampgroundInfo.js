@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export default class CampgroundInfo extends Component {
 
@@ -30,8 +31,8 @@ export default class CampgroundInfo extends Component {
             <div>
                 <h2>{campground.name}</h2>
                 <p>{campground.description}</p>
-                <p>Location: {campground.location_id}</p>
                 <p>Cost: ${campground.cost}</p>
+                <p><a href={campground.link} target="_blank">Click for more info</a></p>
             </div>
         )
     }
