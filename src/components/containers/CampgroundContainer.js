@@ -16,16 +16,6 @@ class CampgroundContainer extends Component {
         this.fetchCampgrounds();
     }
 
-    // componentDidUpdate(prevState) {
-    //     // let searchTerm = parseInt(this.props.searchTerm)
-    //     if (prevState.searchTerm !== this.props.searchTerm) {
-    //         // this.fetchCampgrounds('2')
-    //     }
-    //     // console.log(this.state.searchTerm)
-
-    //     // this.fetchCampgrounds(this.state.searchTerm)
-    // }
-
     fetchCampgrounds = () => {
         let searchTerm = parseInt(this.props.searchTerm)
         if (this.props.searchTerm) {
@@ -56,9 +46,7 @@ class CampgroundContainer extends Component {
     render() {
         return (
             <div>
-                {/* <CampgroundForm /> */}
                 <Campgrounds campgrounds={this.state.campgrounds} />
-                {/* {this.props.campgrounds} */}
             </div>
         )
     }
