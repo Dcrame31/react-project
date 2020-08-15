@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 // import CampgroundContainer from './CampgroundContainer'
-import Locations from '../components/locations/Locations';
+import Locations from '../locations/Locations';
 import { connect } from 'react-redux';
-import { fetchLocations, fetchLocation } from '../actions/campgroundActions';
+import { fetchLocations, fetchLocation } from '../../actions/campgroundActions';
 
 class LocationContainer extends Component {
 
@@ -23,7 +23,6 @@ class LocationContainer extends Component {
     }
 
     render() {
-        const locations = this.props.locations.map((location, id) => <li>{location.name}</li>)
         return (
             <div>
                 {/* <CampgroundContainer location={this.state.location} /> */}

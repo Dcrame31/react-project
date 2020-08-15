@@ -21,7 +21,7 @@ export default function manageLocations(state = {
                 ...state,
                 loading: true
             }
-        case 'LOADING_LOCATION':
+        case 'LOAD_LOCATION':
             return {
                 ...state,
                 locations: action.payload,

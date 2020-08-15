@@ -6,10 +6,7 @@ export default function Location(props) {
     return (
         <div>
             <ul>
-                <li><Link
-                    to={`/locations/${props.location.id}`}
-                    onClick={() => props.handleOnClick(props.location.id)}
-                >{props.location.name}</Link></li>
+                <li><Link to={`/locations/${props.location.id}`}>{props.location.name}</Link></li>
             </ul>
         </div>
     )

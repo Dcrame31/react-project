@@ -3,7 +3,7 @@ import { v1 as uuid } from 'uuid';
 
 export default function manageCampgrounds(state = {
     campgrounds: [],
-    loading: true
+    loading: false
 }, action) {
     switch (action.type) {
         case 'LOADING_CAMPGROUNDS':
@@ -27,7 +27,13 @@ export default function manageCampgrounds(state = {
         case 'LOAD_CAMPGROUND':
             return {
                 ...state,
-                campgrounds: [action.id],
+                campgrounds: action.payload,
+                loading: false
+            }
+        case 'FILTER_CAMPGROUNDS':
+            return {
+                ...state,
+                campgrounds: [...state.campgrounds.filter(campground => campground.location_id === action.id)],
                 loading: false
             }
         case 'ADD_CAMPGROUND':

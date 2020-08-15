@@ -9,7 +9,7 @@ export default class CampgroundList extends Component {
         return (
             <div>
                 <h1>campground list</h1>
-                {campgrounds}
+                <CampgroundContainer searchTerm={this.props.match.params.id} history={this.props} />
             </div>
         )
     }

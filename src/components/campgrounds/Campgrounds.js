@@ -8,7 +8,7 @@ export default class Campgrounds extends Component {
     render() {
         const campgrounds = this.props.campgrounds
             .sort((a, b) => a["name"] > b["name"] ? 1 : -1)
-            .map((campground, id) => <p><Link to="/campgrounds/:id">{campground.name}</Link><Campground key={id} campground={campground} /></p>)
+            .map((campground, id) => <li><Link to="/campgrounds/:id">{campground.name}</Link><Campground key={id} campground={campground} /></li>)
         return (
             <div>
 
