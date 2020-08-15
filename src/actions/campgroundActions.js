@@ -23,12 +23,6 @@ export const fetchCampground = id => {
     }
 }
 
-export const fetchFilteredCampgrounds = id => {
-    return dispatch => {
-        dispatch({ type: 'FILTER_CAMPGROUNDS', id: id })
-    }
-}
-
 export const fetchLocations = () => {
     return dispatch => {
         dispatch({ type: 'LOADING_LOCATIONS' })
