@@ -9,7 +9,6 @@ export default function manageCampgrounds(state = {
         case 'LOADING_CAMPGROUNDS':
             return {
                 ...state,
-                campgrounds: [...state.campgrounds],
                 loading: true
             }
         case 'LOAD_CAMPGROUNDS':
@@ -18,22 +17,9 @@ export default function manageCampgrounds(state = {
                 campgrounds: action.payload,
                 loading: false
             }
-        case 'LOADING_CAMPGROUND':
-            return {
-                ...state,
-                campgrounds: action.payload,
-                loading: true
-            }
-        case 'LOAD_CAMPGROUND':
-            return {
-                ...state,
-                campgrounds: action.payload,
-                loading: false
-            }
         case 'ADDING_CAMPGROUND':
             return {
                 ...state,
-                campgrounds: [...state.campgrounds],
                 loading: true
             }
         case 'ADD_CAMPGROUND':
@@ -48,7 +34,8 @@ export default function manageCampgrounds(state = {
 
             return {
                 ...state,
-                campgrounds: [...state.campgrounds, campground]
+                campgrounds: [...state.campgrounds, campground],
+                loading: false
             }
         case 'DELETE_CAMPGROUND':
             return {

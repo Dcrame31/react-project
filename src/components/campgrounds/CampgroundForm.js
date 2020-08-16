@@ -35,15 +35,15 @@ class CampgroundForm extends Component {
 
         const campground = { campground: this.state.campground }
         this.props.addCampground(campground)
-        this.setState({
-            campground: {
-                name: '',
-                description: '',
-                location_id: '',
-                cost: '',
-                link: ''
-            }
-        })
+        // this.setState({
+        //     campground: {
+        //         name: '',
+        //         description: '',
+        //         location_id: '',
+        //         cost: '',
+        //         link: ''
+        //     }
+        // })
     }
 
     handleChange = e => {
@@ -61,7 +61,7 @@ class CampgroundForm extends Component {
         return (
             <>
                 <h1>Submit a Campground</h1>
-                <form onSubmit={() => this.handleSubmit()}>
+                <form onSubmit={this.handleSubmit}>
                     <p>Name: <input name="name" type="text"
                         value={this.state.campground.name}
                         onChange={this.handleChange} /></p>

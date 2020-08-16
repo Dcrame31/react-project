@@ -45,17 +45,17 @@ export const fetchLocation = id => {
     }
 }
 
-export const addCampground = campground => {
+export const addCampground = (campground) => {
     return dispatch => {
         dispatch({ type: 'ADDING_CAMPGROUND' })
         fetch("http://localhost:3001/campgrounds", {
             method: "POST",
             body: JSON.stringify(campground),
             headers: {
-                "Content-Type": 'application.json'
+                "Content-Type": 'application/json',
+                "Accept": "application/json"
             }
-        })
-            .then(res => res.json())
+        }).then(res => res.json())
             .then(data => dispatch({ type: 'ADD_CAMPGROUND', payload: data }))
 
     }

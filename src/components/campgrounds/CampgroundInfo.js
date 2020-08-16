@@ -23,6 +23,13 @@ export default class CampgroundInfo extends Component {
             })
     }
 
+    handleEdit = e => {
+
+    }
+
+    handleDelete = e => {
+
+    }
 
     render() {
         const { campground } = this.state
@@ -30,8 +37,16 @@ export default class CampgroundInfo extends Component {
             <div>
                 <h2>{campground.name}</h2>
                 <p>{campground.description}</p>
-                <p>Cost: ${campground.cost}</p>
+                <p>Cost: ${campground.cost}/day</p>
                 <p><a href={campground.link} target="_blank">Click for more info</a></p>
+
+                <button
+                    value={campground.id}
+                    onClick={this.handleEdit}>Edit Campground</button>
+
+                <button
+                    value={campground.id}
+                    onClick={this.handleDelete}>Delete Campground</button>
             </div>
         )
     }
