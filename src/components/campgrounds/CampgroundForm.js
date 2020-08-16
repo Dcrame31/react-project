@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import Locations from '../locations/Locations'
-import { addCampground } from '../../actions/campgroundActions';
+import { addCampground, editCampground } from '../../actions/campgroundActions';
 import { connect } from 'react-redux';
 
 class CampgroundForm extends Component {
@@ -52,6 +52,12 @@ class CampgroundForm extends Component {
         this.setState({
             campground: { ...this.state.campground, [e.target.name]: e.target.value }
         })
+    }
+
+    handleEdit = e => {
+        e.preventDefault();
+        const campground = { campground: this.state.campground }
+        this.props.editCampground(this.props.id)
     }
 
     render() {
@@ -131,4 +137,4 @@ class CampgroundForm extends Component {
     }
 }
 
-export default connect(null, { addCampground })(CampgroundForm);
+export default connect(null, { addCampground, editCampground })(CampgroundForm);

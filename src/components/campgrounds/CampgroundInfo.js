@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { deleteCampground, fetchCampground, editCampground } from '../../actions/campgroundActions';
+import { deleteCampground, fetchCampground } from '../../actions/campgroundActions';
 import { connect } from 'react-redux';
 import CampgroundForm from './CampgroundForm';
 
@@ -41,7 +41,7 @@ class CampgroundInfo extends Component {
         return (
             <div>
                 {
-                    this.state.showEditForm === true ? this.state.showForm && <CampgroundForm campground={this.props} onEditPage={this.state.showEditForm} onEditSuccess={this.onEditSuccess} id={this.props.match.params.id} /> :
+                    this.state.showEditForm === true ? this.state.showForm && <CampgroundForm campground={this.props} onEditPage={this.state.showEditForm} onEditSuccess={this.onEditSuccess} id={id} /> :
                         <><h2>{this.props.name}</h2>
                             <p>{this.props.description}</p>
                             <p>Cost: ${this.props.cost}/day</p>
@@ -73,4 +73,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { deleteCampground, fetchCampground, editCampground })(CampgroundInfo);
+export default connect(mapStateToProps, { deleteCampground, fetchCampground })(CampgroundInfo);
