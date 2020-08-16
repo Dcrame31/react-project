@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
-import { deleteCampground, fetchCampground } from '../../actions/campgroundActions';
+import { deleteCampground, fetchCampground, editCampground } from '../../actions/campgroundActions';
 import { connect } from 'react-redux';
+import CampgroundForm from './CampgroundForm';
 
 
 class CampgroundInfo extends Component {
 
+    state = {
+        showForm: false,
+        editForm: false
+    }
 
     componentDidMount() {
         const id = parseInt(this.props.match.params.id)
         this.props.fetchCampground(id)
     }
 
-    handleEdit = e => {
+    handleEdit = () => {
+        this.setState({ showForm: !this.state.showForm, editForm: true })
     }
 
     handleDelete = e => {
@@ -24,13 +30,20 @@ class CampgroundInfo extends Component {
 
     render() {
         const id = parseInt(this.props.match.params.id)
+        // const display = this.state.editForm === true ?  this.state.showForm && <CampgroundForm /> : <h2>{this.props.name}</h2>
+        // <p>{this.props.description}</p>
+        // <p>Cost: ${this.props.cost}/day</p>
+
         return (
             <div>
-                <h2>{this.props.name}</h2>
-                <p>{this.props.description}</p>
-                <p>Cost: ${this.props.cost}/day</p>
-                {/* <p><a href={campground.link} target="_blank">Click for more info</a></p> */}
-
+                {
+                    this.state.editForm === true ? this.state.showForm && <CampgroundForm campground={this.props} /> :
+                        <><h2>{this.props.name}</h2>
+                            <p>{this.props.description}</p>
+                            <p>Cost: ${this.props.cost}/day</p>
+                            <p><a href={this.props.link} target="_blank">Click for more info</a></p>
+                        </>
+                }
                 <button
                     value={id}
                     class="button"
@@ -55,4 +68,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { deleteCampground, fetchCampground })(CampgroundInfo);
+export default connect(mapStateToProps, { deleteCampground, fetchCampground, editCampground })(CampgroundInfo);

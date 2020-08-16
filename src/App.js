@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/locations" component={LocationContainer} />
           <Route exact path="/campgrounds/:id" component={CampgroundInfo} />
           <Route exact path="/locations/:id" component={CampgroundList} />
-          <Route exact path="/new-campground" component={CampgroundForm} />
+          <Route exact path="/form" component={CampgroundForm} />
         </Switch>
         {/* <LocationContainer /> */}
       </div>
