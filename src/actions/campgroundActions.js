@@ -60,3 +60,18 @@ export const addCampground = (campground) => {
 
     }
 }
+
+export const deleteCampground = (id) => {
+    return dispatch => {
+        dispatch({ type: 'DELETING_CAMPGROUND' })
+        fetch(`http://localhost:3001/campgrounds/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(() => dispatch({ type: 'DELETE_TODO', payload: id }))
+
+
+    }
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { deleteCampground } from '../../actions/campgroundActions';
+import { connect } from 'react-redux';
 
-export default class CampgroundInfo extends Component {
+class CampgroundInfo extends Component {
 
     state = {
         campground: '',
@@ -24,11 +26,10 @@ export default class CampgroundInfo extends Component {
     }
 
     handleEdit = e => {
-
     }
 
     handleDelete = e => {
-
+        this.props.deleteCampground(e.target.id)
     }
 
     render() {
@@ -51,3 +52,5 @@ export default class CampgroundInfo extends Component {
         )
     }
 }
+
+export default connect(null, { deleteCampground })(CampgroundInfo);
