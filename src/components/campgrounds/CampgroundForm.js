@@ -35,6 +35,7 @@ class CampgroundForm extends Component {
 
         const campground = { campground: this.state.campground }
         this.props.addCampground(campground)
+            .then(this.props.onCreateSuccess)
         this.setState({
             campground: {
                 name: '',
@@ -44,6 +45,7 @@ class CampgroundForm extends Component {
                 link: ''
             }
         })
+
     }
 
     handleChange = e => {

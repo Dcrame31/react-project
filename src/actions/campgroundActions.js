@@ -1,15 +1,26 @@
-import { history } from '../history';
+// import { history } from '../history';
 
-export const fetchCampgrounds = () => {
+// export const fetchCampgrounds = () => {
+//     return dispatch => {
+//         dispatch({ type: 'LOADING_CAMPGROUNDS' })
+//         fetch("http://localhost:3001/campgrounds")
+//             .then(res => {
+//                 return res.json()
+//             })
+//             .then(data => {
+//                 dispatch({ type: 'LOAD_CAMPGROUNDS', payload: data })
+//             })
+//     }
+// }
+
+export const fetchCampgrounds = (id) => {
+    const searchTerm = parseInt(id)
+    const fetchUrl = searchTerm ? `http://localhost:3001/locations/${searchTerm}` : 'http://localhost:3001/campgrounds'
     return dispatch => {
         dispatch({ type: 'LOADING_CAMPGROUNDS' })
-        fetch("http://localhost:3001/campgrounds")
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                dispatch({ type: 'LOAD_CAMPGROUNDS', payload: data })
-            })
+        fetch(fetchUrl)
+            .then(res => res.json())
+            .then(data => dispatch({ type: 'LOAD_CAMPGROUNDS', payload: data.campgrounds || data }))
     }
 }
 
@@ -49,7 +60,7 @@ export const fetchLocation = id => {
 export const addCampground = (campground) => {
     return dispatch => {
         dispatch({ type: 'ADDING_CAMPGROUND' })
-        fetch("http://localhost:3001/campgrounds", {
+        return fetch("http://localhost:3001/campgrounds", {
             method: "POST",
             body: JSON.stringify(campground),
             headers: {
@@ -65,19 +76,19 @@ export const addCampground = (campground) => {
 export const editCampground = (id) => {
     return dispatch => {
         dispatch({ type: 'EDITING_CAMPGROUND' })
-            .fetch(`http://localhost:3001/campgrounds/${id}`, {
-                method: "PATCH",
-                body: JSON.stringify(),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+        fetch(`http://localhost:3001/campgrounds/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify(),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(res => res.json())
             .then(data => dispatch({ type: 'EDIT_CAMPGROUND', payload: data }))
     }
 }
 
-export const deleteCampground = (id) => {
+export const deleteCampground = (id, onDeleteSuccess) => {
     return dispatch => {
         dispatch({ type: 'DELETING_CAMPGROUND' })
         fetch(`http://localhost:3001/campgrounds/${id}`, {
@@ -87,6 +98,6 @@ export const deleteCampground = (id) => {
             }
         })
             .then(() => dispatch({ type: 'DELETE_CAMPGROUND', payload: id }))
-            .then(() => history.push("/campgrounds"))
+            .then(onDeleteSuccess)
     }
 }

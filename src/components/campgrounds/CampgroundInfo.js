@@ -1,57 +1,57 @@
 import React, { Component } from 'react'
-import { deleteCampground } from '../../actions/campgroundActions';
+import { deleteCampground, fetchCampground } from '../../actions/campgroundActions';
 import { connect } from 'react-redux';
+
 
 class CampgroundInfo extends Component {
 
-    state = {
-        campground: '',
-        params: ''
-    }
 
     componentDidMount() {
-        this.fetchCampground()
-    }
-
-    fetchCampground = () => {
-        let searchTerm = parseInt(this.props.match.params.id)
-        fetch(`http://localhost:3001/campgrounds/${searchTerm}`)
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    campground: data,
-                    params: searchTerm
-                })
-            })
+        const id = parseInt(this.props.match.params.id)
+        this.props.fetchCampground(id)
     }
 
     handleEdit = e => {
     }
 
     handleDelete = e => {
-        this.props.deleteCampground(e.target.value)
+
+        const onDeleteSuccess = () => {
+            this.props.history.push("/campgrounds")
+        }
+        this.props.deleteCampground(e.target.value, onDeleteSuccess)
 
     }
 
     render() {
-        const { campground } = this.state
+        const id = parseInt(this.props.match.params.id)
         return (
             <div>
-                <h2>{campground.name}</h2>
-                <p>{campground.description}</p>
-                <p>Cost: ${campground.cost}/day</p>
+                <h2>{this.props.name}</h2>
+                <p>{this.props.description}</p>
+                <p>Cost: ${this.props.cost}/day</p>
                 {/* <p><a href={campground.link} target="_blank">Click for more info</a></p> */}
 
                 <button
-                    value={campground.id}
+                    value={id}
                     onClick={this.handleEdit}>Edit Campground</button>
 
                 <button
-                    value={campground.id}
+                    value={id}
                     onClick={this.handleDelete}>Delete Campground</button>
             </div>
         )
     }
 }
 
-export default connect(null, { deleteCampground })(CampgroundInfo);
+const mapStateToProps = state => {
+    const campground = state.manageCampgrounds.campgroundInfo || {}
+    return {
+        name: campground.name,
+        description: campground.description,
+        cost: campground.cost,
+        link: campground.link
+    }
+}
+
+export default connect(mapStateToProps, { deleteCampground, fetchCampground })(CampgroundInfo);

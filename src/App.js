@@ -1,6 +1,6 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import HomeContainer from './components/containers/HomeContainer';
 import CampgroundContainer from './components/containers/CampgroundContainer';
 import LocationContainer from './components/containers/LocationContainer';
@@ -9,13 +9,11 @@ import CampgroundInfo from './components/campgrounds/CampgroundInfo';
 import CampgroundForm from './components/campgrounds/CampgroundForm';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import { history } from './history';
-
 
 
 function App() {
   return (
-    <Router history={history}>
+    <Router >
       <NavBar />
       <div className="App">
         <Switch>

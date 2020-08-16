@@ -2,7 +2,7 @@
   text-align: center;
   border: solid 1px;
   padding: 7em;
-  border-radius: 25px;
+  // border-radius: 25px;
 
 }
 
@@ -41,13 +41,18 @@
   }
 }
 
-/* button {
-  border-radius: 5px;
-  border: solid 5px;
-  width: 100px;
-  padding: 12px;
-  margin: 0 6px 6px;
-  background: gray;
-  textDecoration: none;
-  color: white;
-} */
+.navContainer {
+  background: black;
+  a{
+    border-radius: 25px;
+    // border: solid 5px;
+    width: 100px;
+    padding: 10px 10px 10px 10px;
+    margin: 6px 6px 6px 10px;
+    background: black;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+  }
+} 

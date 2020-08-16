@@ -7,11 +7,15 @@ import { Link } from 'react-router-dom';
 export default class Campgrounds extends Component {
 
     state = {
-        addForm: false
+        showForm: false
     }
 
     handleOnClick = () => {
-        this.setState({ addForm: !this.state.addForm })
+        this.setState({ showForm: !this.state.showForm })
+    }
+
+    onCreateSuccess = () => {
+        this.setState({ showForm: false })
     }
 
     render() {
@@ -21,9 +25,9 @@ export default class Campgrounds extends Component {
 
         return (
             <div>
-                {this.state.addForm && <CampgroundForm />}
+                {this.state.showForm && <CampgroundForm onCreateSuccess={this.onCreateSuccess} />}
                 <button
-                    onClick={() => this.handleOnClick()}>{this.state.addForm === true ? 'Hide Form' : 'Add New Campground'}</button>
+                    onClick={this.handleOnClick}>{this.state.showForm === true ? 'Hide Form' : 'Add New Campground'}</button>
                 {/* <Link to="/new-campground">Add New Campground</Link> */}
                 <br />
                 <br />

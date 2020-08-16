@@ -7,7 +7,7 @@ export default function CampgroundList(props) {
     return (
         <div>
             <h1>campground list</h1>
-            <CampgroundContainer searchTerm={props.match.params.id} history={props} />
+            <CampgroundContainer id={props.match.params.id} />
         </div>
     )
 

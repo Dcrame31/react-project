@@ -1,23 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const link = {
-    border: 'solid 5px',
-    width: '100px',
-    padding: '12px',
-    margin: '0 6px 6px',
-    background: 'gray',
-    textDecoration: 'none',
-    color: 'white',
-}
 class NavBar extends React.Component {
     render() {
         return (
-            <div className="button">
+            <div className="navContainer">
                 <NavLink
                     to="/"
                     exact
-                    style={link}
                     activeStyle={{
                         background: 'pink'
                     }}
@@ -26,7 +16,6 @@ class NavBar extends React.Component {
                 <NavLink
                     to="/locations"
                     exact
-                    style={link}
                     activeStyle={{
                         background: 'pink'
                     }}
@@ -35,7 +24,6 @@ class NavBar extends React.Component {
                 <NavLink
                     to="/campgrounds"
                     exact
-                    style={link}
                     activeStyle={{
                         background: 'pink'
                     }}
