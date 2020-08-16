@@ -34,13 +34,19 @@ export default function manageCampgrounds(state = {
 
             return {
                 ...state,
-                campgrounds: [...state.campgrounds, campground],
+                campgrounds: [...state.campgrounds, action.payload],
                 loading: false
+            }
+        case 'DELETING_CAMPGROUND':
+            return {
+                ...state,
+                loading: true
             }
         case 'DELETE_CAMPGROUND':
             return {
                 ...state,
-                reviews: state.campgrounds.filter(campground => campground.id !== action.id)
+                campgrounds: [...state.campgrounds.filter(campground => `${campground.id}` !== action.payload)],
+                loading: false
             }
         default:
             return state;

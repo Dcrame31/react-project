@@ -39,9 +39,9 @@ class CampgroundContainer extends Component {
         }
     }
 
-    handleOnClick = event => {
-        fetch("")
-    }
+    // handleOnClick = event => {
+    //     fetch("")
+    // }
 
     render() {
         return (

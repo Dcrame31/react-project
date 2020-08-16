@@ -35,15 +35,15 @@ class CampgroundForm extends Component {
 
         const campground = { campground: this.state.campground }
         this.props.addCampground(campground)
-        // this.setState({
-        //     campground: {
-        //         name: '',
-        //         description: '',
-        //         location_id: '',
-        //         cost: '',
-        //         link: ''
-        //     }
-        // })
+        this.setState({
+            campground: {
+                name: '',
+                description: '',
+                location_id: '',
+                cost: '',
+                link: ''
+            }
+        })
     }
 
     handleChange = e => {
@@ -73,7 +73,7 @@ class CampgroundForm extends Component {
                     <p>Location: <select name="location_id" id="type"
                         value={this.state.campground.location_id}
                         onChange={this.handleChange}>
-                        <option value="" select>Select a location</option>
+                        <option value="" select="true">Select a location</option>
                         {locationOptions}
                     </select></p>
 

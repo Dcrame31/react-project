@@ -1,3 +1,4 @@
+import { history } from '../history';
 
 export const fetchCampgrounds = () => {
     return dispatch => {
@@ -61,6 +62,21 @@ export const addCampground = (campground) => {
     }
 }
 
+export const editCampground = (id) => {
+    return dispatch => {
+        dispatch({ type: 'EDITING_CAMPGROUND' })
+            .fetch(`http://localhost:3001/campgrounds/${id}`, {
+                method: "PATCH",
+                body: JSON.stringify(),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => dispatch({ type: 'EDIT_CAMPGROUND', payload: data }))
+    }
+}
+
 export const deleteCampground = (id) => {
     return dispatch => {
         dispatch({ type: 'DELETING_CAMPGROUND' })
@@ -70,8 +86,7 @@ export const deleteCampground = (id) => {
                 'Content-Type': 'application/json'
             }
         })
-            .then(() => dispatch({ type: 'DELETE_TODO', payload: id }))
-
-
+            .then(() => dispatch({ type: 'DELETE_CAMPGROUND', payload: id }))
+            .then(() => history.push("/campgrounds"))
     }
 }

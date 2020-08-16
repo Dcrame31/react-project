@@ -29,7 +29,8 @@ class CampgroundInfo extends Component {
     }
 
     handleDelete = e => {
-        this.props.deleteCampground(e.target.id)
+        this.props.deleteCampground(e.target.value)
+
     }
 
     render() {
@@ -39,7 +40,7 @@ class CampgroundInfo extends Component {
                 <h2>{campground.name}</h2>
                 <p>{campground.description}</p>
                 <p>Cost: ${campground.cost}/day</p>
-                <p><a href={campground.link} target="_blank">Click for more info</a></p>
+                {/* <p><a href={campground.link} target="_blank">Click for more info</a></p> */}
 
                 <button
                     value={campground.id}
