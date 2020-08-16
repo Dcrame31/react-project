@@ -9,8 +9,8 @@ class CampgroundForm extends Component {
         campground: {
             name: '',
             description: '',
-            location_id: '',
-            cost: '',
+            location_id: 0,
+            cost: 0,
             link: ''
         },
         locations: []
@@ -30,9 +30,20 @@ class CampgroundForm extends Component {
             })
     }
 
-    handleSubmit = event => {
-        event.preventDefault()
-        this.addCampground()
+    handleSubmit = e => {
+        e.preventDefault();
+
+        const campground = { campground: this.state.campground }
+        this.props.addCampground(campground)
+        this.setState({
+            campground: {
+                name: '',
+                description: '',
+                location_id: '',
+                cost: '',
+                link: ''
+            }
+        })
     }
 
     handleChange = e => {
@@ -42,7 +53,7 @@ class CampgroundForm extends Component {
     }
 
     render() {
-        console.log(this.state.campground.name)
+        // console.log(this.state.campground)
         const locationOptions = this.state.locations
             .sort((a, b) => a.name > b.name ? 1 : -1)
             .map((location, id) => <option key={id} value={location.id}>{location.name}</option>)
@@ -50,7 +61,7 @@ class CampgroundForm extends Component {
         return (
             <>
                 <h1>Submit a Campground</h1>
-                <form onSubmit={() => this.handleSubmit}>
+                <form onSubmit={() => this.handleSubmit()}>
                     <p>Name: <input name="name" type="text"
                         value={this.state.campground.name}
                         onChange={this.handleChange} /></p>
@@ -62,6 +73,7 @@ class CampgroundForm extends Component {
                     <p>Location: <select name="location_id" id="type"
                         value={this.state.campground.location_id}
                         onChange={this.handleChange}>
+                        <option value="" select>Select a location</option>
                         {locationOptions}
                     </select></p>
 
@@ -73,7 +85,7 @@ class CampgroundForm extends Component {
                         value={this.state.campground.link}
                         onChange={this.handleChange} /></p>
 
-                    <p><input type="button" value="Submit" /></p>
+                    <p><input type="submit" value="Submit" /></p>
                 </form>
             </>
         )

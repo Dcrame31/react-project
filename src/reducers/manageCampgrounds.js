@@ -38,17 +38,17 @@ export default function manageCampgrounds(state = {
             }
         case 'ADD_CAMPGROUND':
             const campground = {
-                name: action.campground.name,
-                description: action.campground.description,
-                location_id: action.campground.locationId,
-                cost: action.campground.cost,
-                link: action.campground.link,
+                name: action.payload.name,
+                description: action.payload.description,
+                location_id: action.payload.location_id,
+                cost: action.payload.cost,
+                link: action.payload.link,
                 id: uuid()
             };
 
             return {
                 ...state,
-                campground: [...state.campgrounds, campground]
+                campgrounds: [...state.campgrounds, campground]
             }
         case 'DELETE_CAMPGROUND':
             return {
