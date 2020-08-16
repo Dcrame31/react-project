@@ -62,33 +62,35 @@ class CampgroundForm extends Component {
 
         return (
             <>
-                <h1>Submit a Campground</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <p>Name: <input name="name" type="text"
-                        value={this.state.campground.name}
-                        onChange={this.handleChange} /></p>
+                <div class="form">
+                    <h1>Submit a Campground</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        <p>Name: <input name="name" type="text"
+                            value={this.state.campground.name}
+                            onChange={this.handleChange} /></p>
 
-                    <p>Description: <textarea name="description"
-                        value={this.state.campground.description}
-                        onChange={this.handleChange} /></p>
+                        <p>Description: <input type="textarea" name="description"
+                            value={this.state.campground.description}
+                            onChange={this.handleChange} /></p>
 
-                    <p>Location: <select name="location_id" id="type"
-                        value={this.state.campground.location_id}
-                        onChange={this.handleChange}>
-                        <option value="" select="true">Select a location</option>
-                        {locationOptions}
-                    </select></p>
+                        <p>Location: <select name="location_id" id="type"
+                            value={this.state.campground.location_id}
+                            onChange={this.handleChange}>
+                            <option value="" select="true">Select a location</option>
+                            {locationOptions}
+                        </select></p>
 
-                    <p>Cost: <input type="number" name="cost"
-                        value={this.state.campground.cost}
-                        onChange={this.handleChange} /></p>
+                        <p>Cost: <input type="number" name="cost"
+                            value={this.state.campground.cost}
+                            onChange={this.handleChange} /></p>
 
-                    <p>Link: <input type="text" name="link"
-                        value={this.state.campground.link}
-                        onChange={this.handleChange} /></p>
+                        <p>Link: <input type="text" name="link"
+                            value={this.state.campground.link}
+                            onChange={this.handleChange} /></p>
 
-                    <p><input type="submit" value="Submit" /></p>
-                </form>
+                        <p><input type="submit" value="Submit" /></p>
+                    </form>
+                </div>
             </>
         )
     }

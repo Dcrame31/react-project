@@ -27,6 +27,7 @@ export default class Campgrounds extends Component {
             <div>
                 {this.state.showForm && <CampgroundForm onCreateSuccess={this.onCreateSuccess} />}
                 <button
+                    class="button"
                     onClick={this.handleOnClick}>{this.state.showForm === true ? 'Hide Form' : 'Add New Campground'}</button>
                 {/* <Link to="/new-campground">Add New Campground</Link> */}
                 <br />

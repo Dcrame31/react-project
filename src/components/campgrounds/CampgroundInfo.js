@@ -15,7 +15,6 @@ class CampgroundInfo extends Component {
     }
 
     handleDelete = e => {
-
         const onDeleteSuccess = () => {
             this.props.history.push("/campgrounds")
         }
@@ -34,10 +33,12 @@ class CampgroundInfo extends Component {
 
                 <button
                     value={id}
+                    class="button"
                     onClick={this.handleEdit}>Edit Campground</button>
 
                 <button
                     value={id}
+                    class="button"
                     onClick={this.handleDelete}>Delete Campground</button>
             </div>
         )
