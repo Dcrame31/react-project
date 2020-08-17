@@ -55,6 +55,8 @@ class CampgroundInfo extends Component {
                         value={id}
                         class="button"
                         onClick={this.handleDelete}>Delete Campground</button>
+
+                    <button>Add Review</button>
                 </>
 
 
