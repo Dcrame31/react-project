@@ -23,9 +23,17 @@ export default class Campgrounds extends Component {
             .sort((a, b) => a["name"] > b["name"] ? 1 : -1)
             .map((campground, id) => <Campground key={id} campground={campground} />)
 
+        const campground = {
+            name: '',
+            description: '',
+            location_id: 0,
+            cost: 0,
+            link: ''
+        }
+
         return (
             <div>
-                {this.state.showForm && <CampgroundForm onCreateSuccess={this.onCreateSuccess} />}
+                {this.state.showForm && <CampgroundForm onCreateSuccess={this.onCreateSuccess} campground={campground} />}
                 <button
                     class="button"
                     onClick={this.handleOnClick}>{this.state.showForm === true ? 'Hide Form' : 'Add New Campground'}</button>

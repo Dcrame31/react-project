@@ -5,15 +5,18 @@ import { connect } from 'react-redux';
 
 class CampgroundForm extends Component {
 
-    state = {
-        campground: {
-            name: '',
-            description: '',
-            location_id: 0,
-            cost: 0,
-            link: ''
-        },
-        locations: []
+    constructor(props) {
+        super(props)
+        this.state = {
+            campground: {
+                name: props.campground.name,
+                description: props.campground.description,
+                location_id: props.campground.location_id,
+                cost: props.campground.cost,
+                link: props.campground.link
+            },
+            locations: []
+        }
     }
 
     componentDidMount() {
