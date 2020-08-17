@@ -22,7 +22,8 @@ export default class ReviewForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}
+                    class="form">
                     <p>Name: <input name="name" type="text"
                         // defaultValue={campground.name || ''}
                         value={this.state.review.name}
