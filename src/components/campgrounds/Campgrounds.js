@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
 // import CampgroundList from './CampgroundList';
 import Campground from './Campground';
 // import CampgroundForm from './CampgroundForm';
-import { Link } from 'react-router-dom';
 
 const Campgrounds = (props) => {
 
