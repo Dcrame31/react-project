@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-router-dom';
+import { fetchReviews, addReview } from '../../actions/reviewsActions';
 
 export default class ReviewForm extends Component {
 
