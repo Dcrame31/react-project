@@ -67,7 +67,6 @@ class CampgroundForm extends Component {
             .sort((a, b) => a.name > b.name ? 1 : -1)
             .map((location, id) => <option key={id} value={location.id}>{location.name}</option>)
 
-        // const { campground } = this.props
 
         return (
             <>
