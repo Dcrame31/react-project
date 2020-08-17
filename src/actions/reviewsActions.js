@@ -9,19 +9,18 @@ export const fetchReviews = id => {
     }
 }
 
-export const addReview = review => {
+export const addReview = (review) => {
     return dispatch => {
         dispatch({ type: 'REVIEW_ADDING' })
-        fetch("http://localhost:3001/reviews", {
+        return fetch(`http://localhost:3001/reviews`, {
             method: "POST",
             body: JSON.stringify(review),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Accept": "application/json"
             }
         })
             .then(res => res.json())
-            .then(data => {
-                dispatch({ type: 'REVIEW_ADDED', payload: data })
-            })
+            .then(data => dispatch({ type: 'REVIEW_ADDED', payload: data }))
     }
 }

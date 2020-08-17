@@ -7,12 +7,21 @@ class ReviewForm extends Component {
     state = {
         review: {
             name: '',
-            comment: ''
+            comment: '',
+            campground_id: this.props.id
         }
     }
 
     handleSubmit = e => {
-
+        e.preventDefault();
+        const review = { review: this.state.review }
+        this.props.addReview(review)
+        this.setState({
+            review: {
+                name: '',
+                comment: ''
+            }
+        })
     }
 
     handleChange = e => {
@@ -22,7 +31,7 @@ class ReviewForm extends Component {
     }
 
     render() {
-        console.log(this.state.review)
+        console.log(this.state)
         return (
             <div>
                 <form onSubmit={this.handleSubmit}

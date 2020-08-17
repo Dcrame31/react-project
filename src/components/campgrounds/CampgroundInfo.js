@@ -3,6 +3,7 @@ import { deleteCampground, fetchCampground } from '../../actions/campgroundActio
 import { connect } from 'react-redux';
 import CampgroundForm from './CampgroundForm';
 import ReviewForm from '../reviews/ReviewForm';
+import Reviews from '../reviews/Reviews';
 
 
 class CampgroundInfo extends Component {
@@ -38,6 +39,10 @@ class CampgroundInfo extends Component {
         this.props.history.push("/campgrounds")
     }
 
+    onReviewSuccess = () => {
+        this.setState({ showReviewForm: false })
+    }
+
     render() {
         console.log(this.props.history)
         const id = parseInt(this.props.match.params.id)
@@ -45,7 +50,7 @@ class CampgroundInfo extends Component {
         // <p>{this.props.description}</p>
         // <p>Cost: ${this.props.cost}/day</p>
         const toggleEditForm = this.state.showForm && <CampgroundForm campground={this.props} onEditPage={this.state.showForm} onEditSuccess={this.onEditSuccess} id={id} />
-        const toggleReviewForm = this.state.showReviewForm && <ReviewForm />
+        const toggleReviewForm = this.state.showReviewForm && <ReviewForm onReviewSuccess={this.onReviewSuccess} id={id} />
         return (
             <div>
                 {
@@ -70,6 +75,8 @@ class CampgroundInfo extends Component {
                             <br />
                             <button
                                 onClick={this.handleReview}>{this.state.showReviewForm == true ? "Hide Review" : "Add Review"}</button>
+
+                            <Reviews />
                         </>
                 }
 
