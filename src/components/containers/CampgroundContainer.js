@@ -10,22 +10,27 @@ import { fetchCampgrounds } from '../../actions/campgroundActions';
 class CampgroundContainer extends Component {
 
     state = {
-        showForm: false
+        showForm: false,
+        showList: false
     }
 
     componentDidMount() {
         this.props.fetchCampgrounds(this.props.id);
+        this.setState({
+            showList: true
+        })
     }
 
     handleOnClick = () => {
-        this.setState({ showForm: !this.state.showForm })
+        this.setState({ showForm: !this.state.showForm, showList: !this.state.showList })
     }
 
     onCreateSuccess = () => {
-        this.setState({ showForm: false })
+        this.setState({ showForm: false, showList: !this.state.showList })
     }
 
     render() {
+        console.log(this.props.id)
         const campground = {
             name: '',
             description: '',
@@ -34,17 +39,18 @@ class CampgroundContainer extends Component {
             link: ''
         }
 
+        const toggleForm = this.state.showForm && <CampgroundForm onCreateSuccess={this.onCreateSuccess} campground={campground} />
+        const toggleList = this.state.showList && <Campgrounds campgrounds={this.props.campgrounds} />
         return (
             <div>
-                {this.state.showForm && <CampgroundForm onCreateSuccess={this.onCreateSuccess} campground={campground} />}
+                {toggleForm}
                 <button
                     class="button"
                     onClick={this.handleOnClick}>{this.state.showForm === true ? 'Hide Form' : 'Add New Campground'}</button>
-                {/* <Link to="/new-campground">Add New Campground</Link> */}
                 <br />
                 <br />
                 <br />
-                <Campgrounds campgrounds={this.props.campgrounds} />
+                {toggleList}
             </div>
         )
     }

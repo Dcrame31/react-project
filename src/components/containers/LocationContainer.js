@@ -15,7 +15,6 @@ class LocationContainer extends Component {
     render() {
         return (
             <div>
-                {/* <CampgroundContainer location={this.state.location} /> */}
                 {this.props.loading ? <h2>Loading...</h2> : <Locations locations={this.props.locations} />}
             </div>
         )

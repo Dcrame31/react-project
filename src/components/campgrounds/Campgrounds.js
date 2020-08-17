@@ -1,4 +1,5 @@
 // import CampgroundList from './CampgroundList';
+import React, { Component } from 'react'
 import Campground from './Campground';
 // import CampgroundForm from './CampgroundForm';
 
