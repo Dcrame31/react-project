@@ -16,6 +16,17 @@ export default function manageReviews(state = {
                 reviews: action.payload,
                 loading: false
             }
+        case 'REVIEW_ADDING':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'REVIEW_ADDED':
+            return {
+                ...state,
+                reviews: [...state.reviews, action.payload],
+                loading: true
+            }
         default:
             return state;
     }
