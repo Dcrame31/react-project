@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Location from '../locations/Location';
 
 
-export default function Locations(props) {
+const Locations = (props) => {
 
 
 
@@ -15,5 +15,6 @@ export default function Locations(props) {
             {locations}
         </div>
     )
-
 }
+
+export default Locations;
