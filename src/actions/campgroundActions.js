@@ -73,7 +73,7 @@ export const addCampground = (campground) => {
     }
 }
 
-export const editCampground = (id, data) => {
+export const editCampground = (id, data, onEditSuccess) => {
     return dispatch => {
         dispatch({ type: 'EDITING_CAMPGROUND' })
         fetch(`http://localhost:3001/campgrounds/${id}`, {
@@ -85,6 +85,7 @@ export const editCampground = (id, data) => {
         })
             .then(res => res.json())
             .then(campground => dispatch({ type: 'EDIT_CAMPGROUND', payload: campground }))
+            .then(onEditSuccess)
     }
 }
 

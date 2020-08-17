@@ -31,11 +31,15 @@ class CampgroundForm extends Component {
     }
 
     handleSubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
 
         const campground = { campground: this.state.campground }
-        this.props.addCampground(campground)
-            .then(this.props.onCreateSuccess)
+        if (this.props.onEditPage == true) {
+            this.props.editCampground(this.props.id, campground, this.props.onEditSuccess)
+        } else {
+            this.props.addCampground(campground)
+                .then(this.props.onCreateSuccess)
+        }
         this.setState({
             campground: {
                 name: '',
@@ -45,7 +49,6 @@ class CampgroundForm extends Component {
                 link: ''
             }
         })
-
     }
 
     handleChange = e => {
@@ -54,84 +57,55 @@ class CampgroundForm extends Component {
         })
     }
 
-    handleEdit = e => {
-        e.preventDefault();
-        const campground = { campground: this.state.campground }
-        this.props.editCampground(this.props.id)
-    }
+
 
     render() {
-        // console.log(this.state.campground)
-        console.log(this.props.onEditPage)
         const locationOptions = this.state.locations
             .sort((a, b) => a.name > b.name ? 1 : -1)
             .map((location, id) => <option key={id} value={location.id}>{location.name}</option>)
 
-        const { campground } = this.props
+        // const { campground } = this.props
+
         return (
             <>
-                <div>
-                    {this.props.onEditPage === true ?
 
-                        <>
-                            <h1>Edit {campground.name}</h1>
+                {this.props.onEditPage === true ? <h1>Edit Campground</h1> : <h1> Submit a Campground</h1>}
 
-                            <form onSubmit={this.handleSubmit}>
-                                <p>Name: <input name="name" type="text"
-                                    value={campground.name}
-                                    onChange={this.handleChange} /></p>
 
-                                <p>Description: <input type="textarea" name="description"
-                                    value={campground.description}
-                                    onChange={this.handleChange} /></p>
 
-                                <p>Location: <select name="location_id" id="type"
-                                    value={campground.location_id}
-                                    onChange={this.handleChange}>
-                                    <option value="" select="true">Select a location</option>
-                                    {locationOptions}
-                                </select></p>
-                                <p>Cost: <input type="number" name="cost"
-                                    value={campground.cost}
-                                    onChange={this.handleChange} /></p>
+                <form onSubmit={this.handleSubmit}>
+                    <p>Name: <input name="name" type="text"
+                        // defaultValue={campground.name || ''}
+                        value={this.state.campground.name}
+                        onChange={this.handleChange} /></p>
 
-                                <p>Link: <input type="text" name="link"
-                                    value={campground.link}
-                                    onChange={this.handleChange} /></p>
+                    <p>Description: <input type="textarea" name="description"
+                        // defaultValue={campground.description || ''}
+                        value={this.state.campground.description}
+                        onChange={this.handleChange} /></p>
 
-                                <p><input type="submit" value="Submit" /></p>
-                            </form> </> :
-                        <>
-                            <h1>Submit a Campground</h1>
-                            <form onSubmit={this.handleSubmit}>
-                                <p>Name: <input name="name" type="text"
-                                    value={this.state.campground.name}
-                                    onChange={this.handleChange} /></p>
+                    <p>Location: <select name="location_id" id="type"
+                        // defaultValue
+                        value={this.state.campground.location_id}
+                        onChange={this.handleChange}>
+                        <option value="" select="true">Select a location</option>
+                        {locationOptions}
+                    </select></p>
 
-                                <p>Description: <input type="textarea" name="description"
-                                    value={this.state.campground.description}
-                                    onChange={this.handleChange} /></p>
+                    <p>Cost: <input type="number" name="cost"
+                        value={this.state.campground.cost}
+                        onChange={this.handleChange} /></p>
 
-                                <p>Location: <select name="location_id" id="type"
-                                    value={this.state.campground.location_id}
-                                    onChange={this.handleChange}>
-                                    <option value="" select="true">Select a location</option>
-                                    {locationOptions}
-                                </select></p>
+                    <p>Link: <input type="text" name="link"
+                        value={this.state.campground.link}
+                        onChange={this.handleChange} /></p>
 
-                                <p>Cost: <input type="number" name="cost"
-                                    value={this.state.campground.cost}
-                                    onChange={this.handleChange} /></p>
+                    <p><input type="submit" value="Submit" /></p>
+                </form>
 
-                                <p>Link: <input type="text" name="link"
-                                    value={this.state.campground.link}
-                                    onChange={this.handleChange} /></p>
 
-                                <p><input type="submit" value="Submit" /></p>
-                            </form>
-                        </>
-                    }
-                </div>
+
+
             </>
         )
     }
