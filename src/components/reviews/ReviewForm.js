@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-router-dom';
-import { fetchReviews, addReview } from '../../actions/reviewsActions';
+import { addReview } from '../../actions/reviewsActions';
 
-export default class ReviewForm extends Component {
+class ReviewForm extends Component {
 
     state = {
         review: {
@@ -42,3 +42,5 @@ export default class ReviewForm extends Component {
         )
     }
 }
+
+export default connect(null, { addReview })(ReviewForm)
