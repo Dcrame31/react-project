@@ -11,7 +11,6 @@ class LocationContainer extends Component {
         this.props.fetchLocations()
     }
 
-
     render() {
         return (
             <div>
