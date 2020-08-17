@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import { deleteCampground, fetchCampground } from '../../actions/campgroundActions';
 import { connect } from 'react-redux';
 import CampgroundForm from './CampgroundForm';
-import ReviewForm from '../reviews/ReviewForm';
-import Reviews from '../reviews/Reviews';
+// import ReviewForm from '../reviews/ReviewForm';
+import ReviewContainer from '../containers/ReviewContainer';
 
 
 class CampgroundInfo extends Component {
 
     state = {
         showForm: false,
-        showReviewForm: false
     }
 
     componentDidMount() {
@@ -29,18 +28,8 @@ class CampgroundInfo extends Component {
         this.props.deleteCampground(e.target.value, onDeleteSuccess)
     }
 
-    handleReview = () => {
-        this.setState({
-            showReviewForm: !this.state.showReviewForm
-        })
-    }
-
     onEditSuccess = () => {
         this.props.history.push("/campgrounds")
-    }
-
-    onReviewSuccess = () => {
-        this.setState({ showReviewForm: false })
     }
 
     render() {
@@ -50,7 +39,6 @@ class CampgroundInfo extends Component {
         // <p>{this.props.description}</p>
         // <p>Cost: ${this.props.cost}/day</p>
         const toggleEditForm = this.state.showForm && <CampgroundForm campground={this.props} onEditPage={this.state.showForm} onEditSuccess={this.onEditSuccess} id={id} />
-        const toggleReviewForm = this.state.showReviewForm && <ReviewForm onReviewSuccess={this.onReviewSuccess} id={id} />
         return (
             <div>
                 {
@@ -73,15 +61,11 @@ class CampgroundInfo extends Component {
 
                             <br />
                             <br />
-                            <button
-                                onClick={this.handleReview}>{this.state.showReviewForm == true ? "Hide Review" : "Add Review"}</button>
 
-                            <Reviews />
+                            <ReviewContainer id={id} />
                         </>
                 }
 
-
-                {toggleReviewForm}
             </div>
         )
     }

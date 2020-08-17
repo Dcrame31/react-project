@@ -16,6 +16,7 @@ class ReviewForm extends Component {
         e.preventDefault();
         const review = { review: this.state.review }
         this.props.addReview(review)
+            .then(this.props.onReviewSuccess)
         this.setState({
             review: {
                 name: '',
