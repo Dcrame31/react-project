@@ -75,9 +75,6 @@ class CampgroundInfo extends Component {
 
 
                 {toggleReviewForm}
-
-
-
             </div>
         )
     }

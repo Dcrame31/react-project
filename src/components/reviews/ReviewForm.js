@@ -22,18 +22,17 @@ class ReviewForm extends Component {
     }
 
     render() {
+        console.log(this.state.review)
         return (
             <div>
                 <form onSubmit={this.handleSubmit}
                     class="form">
                     <p>Name: <input name="name" type="text"
-                        // defaultValue={campground.name || ''}
                         value={this.state.review.name}
                         onChange={this.handleChange} /></p>
 
-                    <p>Comment: <input type="textarea" name="description"
-                        // defaultValue={campground.description || ''}
-                        value={this.state.review.description}
+                    <p>Comment: <input type="textarea" name="comment"
+                        value={this.state.review.comment}
                         onChange={this.handleChange} /></p>
 
                     <p><input type="submit" value="Submit" /></p>
