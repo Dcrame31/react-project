@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { addReview } from '../../actions/reviewsActions';
 
 class ReviewForm extends Component {
