@@ -15,7 +15,7 @@ export default class ReviewForm extends Component {
 
     handleChange = e => {
         this.setState({
-            review: { ...state.review, [e.target.name]: e.target.value }
+            review: { ...this.state.review, [e.target.name]: e.target.value }
         })
     }
 

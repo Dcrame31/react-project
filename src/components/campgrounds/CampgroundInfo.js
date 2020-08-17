@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { deleteCampground, fetchCampground } from '../../actions/campgroundActions';
 import { connect } from 'react-redux';
 import CampgroundForm from './CampgroundForm';
+import ReviewForm from '../reviews/ReviewForm';
 
 
 class CampgroundInfo extends Component {
 
     state = {
         showForm: false,
-        showEditForm: false
+        showReviewForm: false
     }
 
     componentDidMount() {
@@ -27,6 +28,12 @@ class CampgroundInfo extends Component {
         this.props.deleteCampground(e.target.value, onDeleteSuccess)
     }
 
+    handleReview = () => {
+        this.setState({
+            showReviewForm: !this.state.showReviewForm
+        })
+    }
+
     onEditSuccess = () => {
         this.props.history.push("/campgrounds")
     }
@@ -37,7 +44,7 @@ class CampgroundInfo extends Component {
         // const display = this.state.editForm === true ?  this.state.showForm && <CampgroundForm /> : <h2>{this.props.name}</h2>
         // <p>{this.props.description}</p>
         // <p>Cost: ${this.props.cost}/day</p>
-
+        const toggleReviewForm = this.state.showReviewForm && <ReviewForm />
         return (
             <div>
                 {
@@ -55,8 +62,11 @@ class CampgroundInfo extends Component {
                         value={id}
                         class="button"
                         onClick={this.handleDelete}>Delete Campground</button>
-
-                    <button>Add Review</button>
+                    <br />
+                    <br />
+                    <button
+                        onClick={this.handleReview}>{this.state.showReviewForm == true ? "Hide Review" : "Add Review"}</button>
+                    {toggleReviewForm}
                 </>
 
 
