@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 
 
+
 .App {
   // border-radius: 25px;
     box-shadow: 5px 10px 3px rgba(0,0,0,.2);
@@ -50,9 +51,10 @@ body {
   /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
   font-family: 'Fira Sans', sans-serif;
   background-color: #cfeaff;
-  background-image: 
-  linear-gradient(to bottom, rgba(248, 248, 248, 0.11), rgba(176, 230, 255, 0.486)),
-  url("http://www.transparenttextures.com/patterns/dark-geometric.png");
+  background-image: url("http://www.transparenttextures.com/patterns/dark-geometric.png");
+  // background-repeat: no-repeat;
+  //   background-attachment: fixed;
+
 }
 
 .navContainer {

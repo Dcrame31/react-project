@@ -33,7 +33,8 @@ class ReviewContainer extends Component {
                 <button
                     onClick={this.handleReview}>{this.state.showForm == true ? "Hide Review" : "Add Review"}</button>
 
-                {toggleForm, displayReviews}
+                {toggleForm}
+                {displayReviews}
             </div>
         )
     }
