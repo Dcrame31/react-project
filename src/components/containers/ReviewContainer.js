@@ -26,15 +26,15 @@ class ReviewContainer extends Component {
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.props.reviews)
         const toggleForm = this.state.showForm && <ReviewForm onReviewSuccess={this.onReviewSuccess} id={this.props.id} />
+        const displayReviews = this.props.reviews.length > 0 ? <Reviews reviews={this.props.reviews} /> : <p>No one has reviewed this campground.</p>
         return (
             <div>
                 <button
                     onClick={this.handleReview}>{this.state.showForm == true ? "Hide Review" : "Add Review"}</button>
 
-                {toggleForm}
-                <Reviews reviews={this.props.reviews} />
+                {toggleForm, displayReviews}
             </div>
         )
     }
