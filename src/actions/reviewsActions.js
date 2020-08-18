@@ -4,7 +4,7 @@ export const fetchReviews = id => {
         fetch(`http://localhost:3001/campgrounds/${id}`)
             .then(res => res.json())
             .then(data => {
-                dispatch({ type: 'REVIEWS_LOADED', payload: data.reviews })
+                return dispatch({ type: 'REVIEWS_LOADED', payload: data.reviews })
             })
     }
 }

@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 
-export default class Review extends Component {
-    render() {
-        return (
-            <div>
+const Review = (props) => {
 
-            </div>
-        )
-    }
+    return (
+        <div>
+            <p>{props.review.name} said:</p>
+            <p>{props.review.comment}</p>
+        </div>
+    )
+
 }
+
+export default Review;

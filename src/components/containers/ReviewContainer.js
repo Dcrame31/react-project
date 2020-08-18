@@ -26,6 +26,7 @@ class ReviewContainer extends Component {
     }
 
     render() {
+        console.log(this.state)
         const toggleForm = this.state.showForm && <ReviewForm onReviewSuccess={this.onReviewSuccess} id={this.props.id} />
         return (
             <div>
@@ -39,10 +40,10 @@ class ReviewContainer extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         reviews: state.manageReviews.reviews
     }
 }
 
-export default connect(null, { fetchReviews })(ReviewContainer);
+export default connect(mapStateToProps, { fetchReviews })(ReviewContainer);

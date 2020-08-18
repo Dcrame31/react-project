@@ -30,7 +30,6 @@ class CampgroundContainer extends Component {
     }
 
     render() {
-        console.log(this.props.id)
         const campground = {
             name: '',
             description: '',
