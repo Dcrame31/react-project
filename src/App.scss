@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+
+
 .App {
   // border-radius: 25px;
     box-shadow: 5px 10px 3px rgba(0,0,0,.2);
@@ -6,7 +9,6 @@
     background-color: white;
     border: solid 1px;
     text-align: center;
-
 }
 
 .App-logo {
@@ -46,7 +48,7 @@
 
 body {
   /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   background-color: #cfeaff;
   background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
 }
@@ -62,7 +64,7 @@ body {
     display: inline-block;
     text-decoration: none;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Fira Sans', sans-serif;
     background-color: orange; 
     color: white;
     font-size: 1em;
@@ -104,8 +106,8 @@ li {
     padding: 10px;
 
     input, select {
-      width: 30%;
-      padding: 10px 10px;
+      width: 50%;
+      padding: 5px 10px;
       margin: 4px 0;
       display: inline-block;
       border: 1px solid #ccc;

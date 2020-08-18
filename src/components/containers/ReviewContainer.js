@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 class ReviewContainer extends Component {
 
     state = {
-        showReviews: false,
         showForm: false
     }
 
