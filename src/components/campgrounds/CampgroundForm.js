@@ -35,7 +35,7 @@ class CampgroundForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-
+        console.log('a')
         const campground = { campground: this.state.campground }
         if (this.props.onEditPage == true) {
             this.props.editCampground(this.props.id, campground, this.props.onEditSuccess)
@@ -43,6 +43,7 @@ class CampgroundForm extends Component {
             this.props.addCampground(campground)
                 .then(this.props.onCreateSuccess)
         }
+        console.log('g')
         this.setState({
             campground: {
                 name: '',

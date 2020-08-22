@@ -58,7 +58,9 @@ export const fetchLocation = id => {
 }
 
 export const addCampground = (campground) => {
+    console.log('b')
     return dispatch => {
+        console.log('c')
         dispatch({ type: 'CAMPGROUND_ADDING' })
         return fetch("http://localhost:3001/campgrounds", {
             method: "POST",
@@ -67,10 +69,15 @@ export const addCampground = (campground) => {
                 "Content-Type": 'application/json',
                 "Accept": "application/json"
             }
-        }).then(res => res.json())
-            .then(data => dispatch({ type: 'CAMPGROUND_ADDED', payload: data }))
-
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('d')
+                return dispatch({ type: 'CAMPGROUND_ADDED', payload: data })
+            })
+        console.log('e')
     }
+    console.log('f')
 }
 
 export const editCampground = (id, data, onEditSuccess) => {

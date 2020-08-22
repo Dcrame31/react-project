@@ -11,7 +11,8 @@ class CampgroundContainer extends Component {
 
     state = {
         showForm: false,
-        showList: false
+        showList: false,
+        searchTerm: ''
     }
 
     componentDidMount() {
@@ -29,6 +30,21 @@ class CampgroundContainer extends Component {
         this.setState({ showForm: false, showList: !this.state.showList })
     }
 
+    // handleSearch = e => {
+    //     e.preventDefault();
+
+
+    //     this.setState({
+    //         result: result
+    //     })
+    // }
+
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     render() {
         const campground = {
             name: '',
@@ -38,10 +54,15 @@ class CampgroundContainer extends Component {
             link: ''
         }
 
+        const searchResults = this.props.campgrounds.filter(campground => campground.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+
         const toggleForm = this.state.showForm && <CampgroundForm onCreateSuccess={this.onCreateSuccess} campground={campground} />
-        const toggleList = this.state.showList && <Campgrounds campgrounds={this.props.campgrounds} />
+        const toggleList = this.state.showList && <Campgrounds campgrounds={searchResults} />
         return (
             <div>
+                <form>
+                    <input type="text" value={this.state.searchTerm} name="searchTerm" onChange={this.handleChange} />
+                </form>
                 {toggleForm}
                 <button
                     class="button"
